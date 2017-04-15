@@ -94,7 +94,7 @@ l_DTS_no_minus_1:
 	mov dx, heapptr
 	mov [si].data_, dx
 	inc ax
-	add ax, heapptr
+	add ax, dx
 	lea dx, MAXHEAP
 	cmp ax, dx
 	jg Errors_Heap_Overflow
@@ -121,4 +121,53 @@ l_DTS_3:
 	mov byte ptr [si], 0
 
 	ret; digitToString
+;------------------------------------
+
+;------------------------------------
+sorter_toHigh:;(si, di)
+	mov dx, [si]
+	cmp dx, [di]
+	jle l_STH_end
+	push word ptr [si]
+	push word ptr [di]
+	pop word ptr [si]
+	pop word ptr [di]
+l_STH_end:
+	ret; sorter_toHigh
+
+sorter_toLow:;(si, di)
+	mov dx, [si]
+	cmp dx, [di]
+	jge l_STH_end
+	push word ptr [si]
+	push word ptr [di]
+	pop word ptr [si]
+	pop word ptr [di]
+l_STL_end:
+	ret; sorter_toLow
+
+sortArray:;(array, sort_method)
+	mov si, [var 1]
+	mov cx, [si].length_
+	mov si, [si].data_
+	mov ax, [var 2]
+	
+	cmp cx, 1
+	je l_SA_end
+	
+	dec cx
+l_SA_loop_1:
+	push cx
+	mov di, si
+l_SA_loop_2:
+	add di, 2
+	call ax
+	loop l_SA_loop_2
+	
+	add si, 2
+	pop cx
+	loop l_SA_loop_1
+
+l_SA_end:
+	ret; sortArray
 ;------------------------------------

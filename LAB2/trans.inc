@@ -3,6 +3,7 @@ base=data_TS_son
 number=data_TS_number
 
 transLate:
+	_save_mem
 	_save_regs
 l_TS_redo_1:
 	_print_msg ms_TS_1
@@ -20,4 +21,5 @@ l_TS_redo_2:
 	_invoke outputString <string>
 	_print_msg endl
 	_load_regs
+	_load_mem
 	ret; transLate

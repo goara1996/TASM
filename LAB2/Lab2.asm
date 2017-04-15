@@ -6,8 +6,6 @@ include macro.inc
 
 .data
 include data.inc
-sdata type_string <>
-
 
 .stack 100h
 
@@ -19,11 +17,6 @@ include errors.inc
 include fibo.inc
 include trans.inc
 include arrays.inc
-
-_get_hotkey macro
-	mov ah, 08h
-	int 21h
-endm
 
 main:
 	_init_prog
@@ -53,7 +46,7 @@ l_Main_ts:
 	jmp l_Main_ask_hotkey
 	
 l_Main_as:
-	_print_msg <ms_Main_3, endl>
+	_print_msg <ms_Main_4, endl>
 	_invoke arraySorting
 	jmp l_Main_ask_hotkey
 

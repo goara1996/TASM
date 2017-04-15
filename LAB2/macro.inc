@@ -9,6 +9,15 @@ endm
 ;-----------------
 
 ;-----------------
+_save_mem macro
+	push heapptr
+endm
+_load_mem macro
+	pop heapptr
+endm
+;-----------------
+
+;-----------------
 _save_regs macro list
 	ifb <list>
 		irp reg, <ax, bx, cx, dx, si, di>
@@ -49,7 +58,7 @@ endm
 var equ bp - 2*
 _sub_invoke macro arg, CHECK
 	ifidn <bx>, <arg>
-		push [bp - 2]
+		push word ptr [bp + 2]
 		goto end_m
 	endif
 	REG_CHECK = 0
@@ -119,5 +128,12 @@ _invoke macro fname, args
 		pop bp
 		pop bx
 	endif
+endm
+;-----------------
+
+;-----------------
+_get_hotkey macro
+	mov ah, 08h
+	int 21h
 endm
 ;-----------------

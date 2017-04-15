@@ -43,6 +43,7 @@ l_proc_LB_err_2:
 
 number = data_LB_number	
 leonardoBonacci:
+	_save_mem
 	_save_regs
 l_LB_redo_1:
 	_print_msg ms_LB_1
@@ -54,4 +55,5 @@ l_LB_redo_1:
 	_invoke outputDecimal <dw, number>
 	_print_msg endl
 	_load_regs
+	_load_mem
 	ret; leonardoBonacci
