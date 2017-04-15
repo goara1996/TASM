@@ -3,7 +3,7 @@
 set file=Lab2
 
 ECHO Compilation...
-tasm.exe /l %file%.asm
+tasm.exe /m8 /l %file%.asm
 tlink.exe /v %file%.obj, _%file%.exe
 ECHO Deleting unnecessary files...
 ::del %file%.lst

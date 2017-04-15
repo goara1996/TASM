@@ -9,6 +9,8 @@ endl db	0Dh, 0Ah, '$'
 ms_err db "Error encountered: $"
 ms_err_heap db "Heap overflow!$"
 ms_err_dig	db "Invalid digit!$"
+ms_err_fib	db "Invalid sequence index!$"
+ms_err_fib_2 db "Sorry, but this sequence index is too large$"
 
 ; Типы
 ; Строка
@@ -42,9 +44,17 @@ data_TS_number	dw ?
 data_TS_son		dw ?
 data_TS_string	type_string <>
 ; main
-ms_Main_1 db "Now running Fibonacci calculation$"
-ms_Main_2 db "Now running digit translation$"
-
+ms_Main_1 db "Press hotkey for a task$"
+ms_Main_2 db "Now running Fibonacci calculation$"
+ms_Main_3 db "Now running digit translation$"
+ms_Main_4 db "Now running array sorting$"
+ms_Main_hotkeys db 0Dh, 0Ah
+		  db "[1] - Fibonacci calculation",	0Dh, 0Ah
+		  db "[2] - Digit translation",		0Dh, 0Ah
+		  db "[3] - Array sorting",			0Dh, 0Ah
+		  db "[q] - Quit programm",			0Dh, 0Ah
+		  db '$'
+		  
 ; Куча
 heapptr	dw heap
 heap	db HEAPSIZE dup('X')

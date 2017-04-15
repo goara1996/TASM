@@ -88,7 +88,7 @@ _sub_invoke macro arg, CHECK
 		endif
 		if CHECK eq 3 
 			mov bx, [bp]
-			push ss:[bx - 2 * arg]
+			push word ptr ss:[bx - 2 * arg]
 			goto end_check
 		endif
 	:end_check

@@ -17,10 +17,7 @@ inputString:;(string)
 	add ax, di
 	lea dx, MAXHEAP
 	cmp ax, dx
-	jle l_IS_noerr
-	_print_msg <ms_err, ms_err_heap, endl>
-	_exit_prog
-l_IS_noerr:
+	jg Errors_Heap_Overflow
 	mov heapptr, ax
 	
 	lea si, buffer.bdata_
